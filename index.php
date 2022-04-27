@@ -1,7 +1,7 @@
 <?php
 require_once("config.php");
 require_once("Database.php");
-$db = new Database('mysql:host=localhost;dbname=urlshortener', 'root', '');
+$db = new Database();
 if ($_SERVER["REQUEST_METHOD"] == "GET" && @$_GET["url"]) {
     $url = $db->singleValueQuery("SELECT `location` FROM redirect WHERE `url` = ?", [$_GET["url"]]);
     if (!$url) {
